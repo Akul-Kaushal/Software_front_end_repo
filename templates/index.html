@@ -1,22 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submit Data to Google Sheets</title>
+    <title>InSight Ledger</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
-    <h1>Submit Data to Google Sheets</h1>
-    <form action="/submit" method="post">
-        <label for="data">Enter your data:</label>
-        <input type="text" id="data" name="data" required>
-        <button type="submit">Submit</button>
-    </form>
 
-    <form action="/upload" method="POST" enctype="multipart/form-data">
-        <input type="file" name="pdf_file" accept="application/pdf">
-        <button type="submit">Upload</button>
-    </form>
-    
+<body>
+    <div class="bg-container">
+        <div class="sidebar">
+            <div class="description-container">
+                <h1>InSightLedger</h1>
+                <p class="">Welcome, this is InSight Ledger, a chatbot powered with AI for all your docs.</p>
+            </div>
+            <div class="upload-doc-container">
+                <p class="">Upload document</p>
+                <!-- <input type="file" id="fileUploader" hidden>
+                <label for="fileUploader" class="file-upload-btn">Upload</label> -->
+                    <form action="/upload" method="POST" enctype="multipart/form-data">
+                        <input type="file" name="pdf_file" accept="application/pdf">
+                        <button type="submit">Upload</button>
+                    </form>
+            </div>
+            
+        </div>
+        <div class="main-section">
+            <h2 class="main-section-heading">Chat with your doc</h2>
+            <div class="question-input-container">
+                <input type="text" id="questionInput" class="question-input">
+                <button class="question-send-btn">Send</button>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>

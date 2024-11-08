@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Form</title>
+</head>
+<body>
+    <h1>Ask Your Question</h1>
+    <form id="queryForm" onsubmit="event.preventDefault(); askQuestion();">
+        <input type="text" id="query" name="query" placeholder="Enter search query" required>
+        <button type="submit">Ask</button>
+    </form>
+
+    <div id="response"></div>
+
+    <script>
+        function askQuestion() {
+            const query = document.getElementById("query").value;
+
+            fetch("/ask", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ query: query })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("response").innerText = JSON.stringify(data);
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+        }
+    </script>
+</body>
+</html>

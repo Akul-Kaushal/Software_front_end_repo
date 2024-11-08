@@ -29,4 +29,5 @@ def create_embedding(text_chunk,embedding_model):
     embedding = embedding_model.encode(text_chunk)
     return embedding.tolist()  # Convert to list for JSON compatibility
 
-def
+def database():
+    return
