@@ -4,7 +4,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 from flask_pymongo import PyMongo
 import os
 from dotenv import load_dotenv
-import rag_script as rg
+import test_rag as tst
 
 
 load_dotenv()
@@ -45,14 +45,9 @@ def upload_file():
     file = request.files['pdf_file']
     if file.filename == '':
         return "No file selected"
-
-    # Process the PDF file
-    embedding_model = rg.embedding_model
-
-    text = rg.extract_text_from_pdf(file)
-    chunks = rg.get_text_chunks(text)
-    embedding = rg.create_embedding(chunks,embedding_model=embedding_model)
-    return embedding  # Or handle as needed
+    query = "What is the summary of the book?"
+    response = tst.input(file,query)
+    return response # Or handle as needed
 
 
 
