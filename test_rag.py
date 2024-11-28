@@ -5,6 +5,7 @@ from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.schema import HumanMessage
 from langchain_ollama import ChatOllama
 from langchain.docstore.document import Document
+from PyPDF2 import PdfReader
 
 # Ensure embeddings are updated to match LangChain updates
 embedding_model = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
@@ -12,12 +13,23 @@ ollama_model = ChatOllama(model="llama3:latest", base_url="http://localhost:1143
 
 def extract_text_from_pdf(pdf_file):
     print("Extracting text from the PDF...")
-    from PyPDF2 import PdfReader
-    pdf_reader = PdfReader(pdf_file)
     text = ""
-    for page in pdf_reader.pages:
-        text += page.extract_text()
-    print("PDF text extraction completed.")
+    
+    # Use a context manager to ensure the file is open
+    try:
+        # Open the PDF file in binary read mode
+        with open(pdf_file, 'rb') as file:
+            pdf_reader = PdfReader(file)
+            
+            # Iterate over all pages and extract text
+            for page in pdf_reader.pages:
+                text += page.extract_text()
+                
+        print("PDF text extraction completed.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return None
+    
     return text
 
 def get_text_chunks(text):
@@ -50,7 +62,7 @@ def conversational_retrieval_with_ollama(vector_store, query):
         context = "\n".join([doc.page_content for doc in docs])
         print("\n--- Retrieved Context ---")
         print(context)
-        prompt = f"The following context is provided:\n{context}\n\n{query}"
+        prompt = f"The following context is provided, If there is any calculation work in general required then calculate and present the answer:\n{context}\n\n{query}"
 
     print("\n--- Generated Prompt ---")
     print(prompt)

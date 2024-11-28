@@ -13,28 +13,47 @@
         <div class="sidebar">
             <div class="description-container">
                 <h1>InSightLedger</h1>
-                <p class="">Welcome, this is InSight Ledger, a chatbot powered with AI for all your docs.</p>
+                <p>Welcome, this is InSight Ledger, a chatbot powered with AI for all your docs.</p>
             </div>
             <div class="upload-doc-container">
-                <p class="">Upload document</p>
-                
-                    <form action="/upload" method="POST" enctype="multipart/form-data"> 
-                        <!-- <input type="file" id="fileUploader" hidden>
-                        <label for="fileUploader" class="file-upload-btn">Upload</label> -->
-                        <input type="file" name="pdf_file" accept="application/pdf">
-                        <button type="submit">Upload</button>
-                    </form> 
+                <p>Upload document</p>
+                <form action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+                    <input type="file" name="pdf_file" accept="application/pdf">
+                    <button type="submit">Upload</button>
+                </form>
             </div>
-            
         </div>
         <div class="main-section">
             <h2 class="main-section-heading">Chat with your doc</h2>
+            <div id="chat-output" class="chat-output"></div>
             <div class="question-input-container">
-                <input type="text" id="questionInput" class="question-input">
-                <button class="question-send-btn">Send</button>
+                <input type="text" id="questionInput" class="question-input" placeholder="Ask a question...">
+                <button class="question-send-btn" id="sendQuestion">Send</button>
             </div>
         </div>
     </div>
+
+    <script>
+        // Chat functionality
+        document.getElementById("sendQuestion").addEventListener("click", async function () {
+            const question = document.getElementById("questionInput").value;
+            if (question.trim() === "") return;
+
+            const response = await fetch("{{ url_for('chat') }}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: `message=${encodeURIComponent(question)}`,
+            });
+
+            const responseText = await response.text();
+            const chatOutput = document.getElementById("chat-output");
+            chatOutput.innerHTML += `<p><strong>You:</strong> ${question}</p>`;
+            chatOutput.innerHTML += `<p><strong>Bot:</strong> ${responseText}</p>`;
+            document.getElementById("questionInput").value = "";
+        });
+    </script>
 </body>
 
 </html>

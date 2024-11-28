@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="shortcut icon" href="imgs/logo.png" type="image/x-icon"> -->
+    <title> InsightLedger AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='main_style.css') }}">
+    
+</head>
+
+<body>
+
+    <div class="main">
+
+        <div class="section1" id="home">
+
+            <div class="overlay">
+                <video src="static\imgs\bg2.mp4" muted loop autoplay></video>
+            </div>
+
+            <div class="left">
+                <div class="left-top">
+                    <div class="r">
+                        <!-- <img src="./imgs/logo.png" alt=""> --> <!--LOGO-->
+                        <h2>InsightLedger AI</h2>
+                    </div>
+                    <div class="s">
+                        <i class="ri-menu-line"></i>
+                    </div>
+                </div>
+                <!-- <div class="left-mid">
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="./imgs/H1.jpeg" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./imgs/H2.jpeg" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./imgs/H3.jpeg" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./imgs/H4.jpeg" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./imgs/H5.jpeg" alt="">
+                            </div>
+
+                        </div>
+                    </div>
+                </div> -->
+                <!-- <div class="left-bottom">
+                    <h4>
+                        Say goodbye to financial confusion and hello to smart insights. <br>
+                        From tax summaries and reports to budget analysis<br>
+                        and spending trends.
+                    </h4>
+                    <button>AI Documentation</button>
+                </div> -->
+            </div>
+
+            <div class="mid">
+                <nav class="nav-desktop">
+                    <button>Home</button>
+                    <button>Features</button>
+                    <button>Explore</button>
+                    <button>About</button>
+                </nav>
+
+                <div class="content">
+                    <h1>Turning Your Financial Documents <br>into Actionable Insights
+                    </h1>
+                        <!-- <label for="images" class="drop-container" id="dropcontainer">
+                            <span class="drop-title">Upload File </span>
+                            <input type="file" id="fileUpload" required>
+                        </label> -->
+
+                    <!-- <div class="messageBox">
+                        <input id="messageInput" type="text" placeholder="Enter a question about your document"
+                            required="" />
+                        <button id="sendButton">
+                            <svg viewBox="0 0 664 663" fill="#fff" stroke="#fff" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
+                                    fill="none"></path>
+                                <path
+                                    d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
+                                    stroke="#6c6c6c" stroke-width="33.67" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </svg>
+                        </button>
+                    </div> -->
+
+
+                </div>
+                <script src="{{ url_for('static', filename='script.js') }}"></script>
+                <div class="tools">
+                    <!-- <div class="icons">
+                        <img src="./imgs/P1.png" alt="">
+                        <img src="./imgs/P2.png" alt="">
+                        <img src="./imgs/P3.png" alt="">
+                        <img src="./imgs/P4.png" alt="">
+                    </div> -->
+                    <p>Innovative Tools for Better Financial Outcomes.</p>
+                    <!-- <button class="upload-btn" onclick="redirectToUpload()">Get Started</button>
+                    <a href="{{ url_for('index') }}" class="button">Contact Us</a> -->
+                    <a href="{{ url_for('index') }}" class="upload-btn" >Go to Index</a>
+
+                </div>
+
+            </div>
+
+            <div class="right">
+                <div class="top">
+                    <video src="static\imgs\RIGHT-TOP-VIDEO.mp4" loop muted autoplay alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="section2" id="features">
+            <h1> Features of Project </h1>
+            <div class="container">
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <!-- <img src="imgs/doc-upload.jpeg.jpeg" alt="Document Upload"> -->
+                            <h3>Document Retrieval</h3>
+                            <p> Fetch documents from multiple sources seamlessly.</p>
+                        </div>
+                        <div class="card-back">
+                            <p>Gain easy access to your financial documents from various platforms, all in one place.
+                                Streamline your workflow by retrieving crucial documents with just a few clicks. </p>
+                            <button class="Btn2">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <!-- <img src="data-analysis-icon.png" alt="Data Analysis"> -->
+                            <h3>Summarization</h3>
+                            <p>Generate brief summaries of financial documents.</p>
+                        </div>
+                        <div class="card-back">
+                            <p>Save time by generating concise and actionable summaries from long financial reports. Our
+                                AI simplifies complex content into digestible insights. </p>
+                            <button class="Btn2">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <!-- <img src="security-icon.png" alt="Security Features"> -->
+                            <h3>Real-Time Querying</h3>
+                            <p>Get instant financial insights with real-time data.</p>
+                        </div>
+                        <div class="card-back">
+                            <p> Retrieve accurate and up-to-the-minute financial insights on demand. Our platform
+                                ensures you stay informed with real-time querying capabilities for critical decisions.
+                            </p>
+                            <button class="Btn2">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <!-- <img src="custom-reports-icon.png" alt="Custom Reports"> -->
+                            <h3>Advanced Parsing</h3>
+                            <p>Analyze complex financial documents effortlessly.</p>
+                        </div>
+                        <div class="card-back">
+                            <p>Handle and break down intricate financial data with our advanced parsing technology.
+                                Tackle complex documents with ease, extracting valuable insights without manual effort.
+                            </p>
+                            <button class="Btn2">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section3" id="about">
+            <div class="container1">
+                <h1>About Insight Ledger</h1>
+                <div class="content">
+                    <div class="about-info">
+                        <h2>Our Mission</h2>
+                        <p>
+                            At Insight Ledger, we aim to revolutionize the way financial data is analyzed and processed.
+                            We provide businesses with AI-driven insights to turn complex documents into actionable
+                            decisions.
+                        </p>
+                        <h2>Our Vision</h2>
+                        <p>
+                            To empower financial institutions and businesses with cutting-edge technology to make
+                            informed, data-driven decisions and simplify document management across the industry.
+                        </p>
+                    </div>
+                    <div class="team-info">
+                        <h2>Meet Our Team</h2>
+                        <div class="team-members">
+                            <div class="member">
+                                <img src="image.png" alt="profile">
+                                <h3>Vikram</h3>
+                                <p>Developer</p>
+                            </div>
+                            <div class="member">
+                                <img src="image.png" alt="profile">
+                                <h3>Akul</h3>
+                                <p>Developer</p>
+                            </div>
+                            <!-- Add more team members as needed -->
+                        </div>
+                    </div>
+                </div>
+                <div class="call-to-action">
+                    <p>Want to learn more about how we can help your business?</p>
+                    <a href="{{ url_for('contact') }}" class="button">Contact Us</a>
+                    <!-- <button onclick="location.href='{{ url_for("contact") }}'">Contact Us</button> -->
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <h3>Insight Ledger</h3>
+                    <p>
+                        Turning financial data into actionable insights with AI-driven solutions.
+                        Empowering businesses through innovative document management technology.
+                    </p>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#explore">Explore</a></li>
+                        <li><a href="#about">About Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@insightledger.com</p>
+                    <p>Phone: +123-456-7890</p>
+                    <div class="social-icons">
+                        <a href="#"><img src="{{ url_for('static', filename='imgs/facebook-3-48.png') }}" alt="Facebook"></a>
+                        <a href="#"><img src="{{ url_for('static', filename='imgs/twitter-x-48.png') }}" alt="Twitter"></a>
+                        <a href="#"><img src="{{ url_for('static', filename='imgs/linkedin-3-48.png') }}" alt="LinkedIn"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Insight Ledger. All rights reserved.</p>
+                <p><i class="ri-heart-fill"></i> Developed by Team Bravo Six</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+        integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+        integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.3/dist/locomotive-scroll.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sheryjs/dist/Shery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/automat/controlkit.js@master/bin/controlKit.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

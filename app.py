@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+
 from flask_pymongo import PyMongo
 import os
 from dotenv import load_dotenv
@@ -15,14 +16,23 @@ app = Flask(__name__)
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
 creds = ServiceAccountCredentials.from_json_keyfile_name(r"C:\Users\lalpa\Documents\soft_fl\flasktest101-c9059b332632.json", scope)
 client = gspread.authorize(creds)
+file_path = None
+flag = 0
 
-# Route to render the input form
 @app.route('/')
+def root():
+    return render_template('main.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+@app.route('/index')
 def index():
     return render_template('index.html')
 
 # Route to handle form submission
-@app.route('/submit', methods=['POST'])
+@app.route('/submit',methods=['POST'])
 def submit():
     user_data = request.form['data']
     print("Available Spreadsheets:")
@@ -37,17 +47,35 @@ def submit():
         return 'Error: Spreadsheet not found. Please check the name and permissions.'
 
 
-@app.route('/upload', methods=['POST'])
-def upload_file():
-    if 'pdf_file' not in request.files:
-        return "No file part in the request"
-    
-    file = request.files['pdf_file']
-    if file.filename == '':
-        return "No file selected"
-    query = "What is the summary of the book?"
-    response = tst.input(file,query)
-    return response # Or handle as needed
+@app.route("/upload", methods=["POST"])
+def upload():
+    global file_path, flag
+    upload_status = None
+    if "pdf_file" in request.files:
+        uploaded_file = request.files["pdf_file"]
+        if uploaded_file.filename != "":
+            # Save the file (adjust path as needed)
+            uploaded_file.save(f"static/uploads/{uploaded_file.filename}")
+            upload_status = f"File '{uploaded_file.filename}' uploaded successfully!"
+            file_path = f"static/uploads/{uploaded_file.filename}"  
+            flag = 1
+        else:
+            upload_status = "No file selected!"
+    return render_template("index.html", upload_status=upload_status, bot_response=None)
+
+# Chat route
+@app.route("/chat", methods=["POST"])
+def chat():
+    global file_path, flag
+    user_message = request.form.get("message")
+    # response = f"You asked: {user_message}"
+
+    # Define the file path
+    if flag == 0:
+        file_path = r'C:/Users/lalpa/Documents/soft_fl/static/uploads/test_file.pdf'
+
+    response = tst.input(file_path,user_message)
+    return response
 
 
 
