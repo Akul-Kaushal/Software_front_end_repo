@@ -108,7 +108,7 @@
                     <p>Innovative Tools for Better Financial Outcomes.</p>
                     <!-- <button class="upload-btn" onclick="redirectToUpload()">Get Started</button>
                     <a href="{{ url_for('index') }}" class="button">Contact Us</a> -->
-                    <a href="{{ url_for('index') }}" class="upload-btn" >Go to Index</a>
+                    <a href="{{ url_for('index') }}" class="upload-btn" >Get Started</a>
 
                 </div>
 
@@ -208,12 +208,12 @@
                         <h2>Meet Our Team</h2>
                         <div class="team-members">
                             <div class="member">
-                                <img src="image.png" alt="profile">
+                                <img src="{{ url_for('static', filename='imgs/vikram.png') }}" alt="profile">
                                 <h3>Vikram</h3>
                                 <p>Developer</p>
                             </div>
                             <div class="member">
-                                <img src="image.png" alt="profile">
+                                <img src="{{ url_for('static', filename='imgs/akul.png') }}" alt="profile">
                                 <h3>Akul</h3>
                                 <p>Developer</p>
                             </div>
@@ -223,7 +223,7 @@
                                 <p>Developer</p>
                             </div>
                             <div class="member">
-                                <img src="image.png" alt="profile">
+                                <img src="{{ url_for('static', filename='imgs/manik.png') }}" alt="profile">
                                 <h3>Manik</h3>
                                 <p>Developer</p>
                             </div>

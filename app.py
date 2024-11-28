@@ -13,9 +13,12 @@ load_dotenv()
 app = Flask(__name__)
 
 # Set up the Google Sheets API credentials
-scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
-creds = ServiceAccountCredentials.from_json_keyfile_name(r"C:\Users\lalpa\Documents\soft_fl\flasktest101-c9059b332632.json", scope)
-client = gspread.authorize(creds)
+def authenticate_google_sheets():
+    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
+    creds = ServiceAccountCredentials.from_json_keyfile_name(r"C:\Users\lalpa\Documents\soft_fl\flasktest101-c9059b332632.json", scope)
+    client = gspread.authorize(creds)
+    return client
+
 file_path = None
 flag = 0
 
@@ -32,17 +35,24 @@ def index():
     return render_template('index.html')
 
 # Route to handle form submission
-@app.route('/submit',methods=['POST'])
+@app.route('/submit', methods=['POST'])
 def submit():
-    user_data = request.form['data']
-    print("Available Spreadsheets:")
-    for spreadsheet in client.openall():
-        print(spreadsheet.title)
+    # Extract data from form
+    name = request.form['name']
+    email = request.form['email']
+    message = request.form['message']
+
+    # Authenticate Google Sheets client
+    client = authenticate_google_sheets()
 
     try:
-        sheet = client.open("flask_test_101").sheet1 
-        sheet.append_row([user_data])
-        return 'Data submitted successfully!'
+        # Open the Google Sheets spreadsheet
+        sheet = client.open("flask_test_101").sheet1  # Replace with your actual spreadsheet name
+        
+        # Append the extracted data as a new row
+        sheet.append_row([name, email, message])
+        print("Data Submitted Successful")
+        return render_template('contact.html')
     except gspread.SpreadsheetNotFound:
         return 'Error: Spreadsheet not found. Please check the name and permissions.'
 
