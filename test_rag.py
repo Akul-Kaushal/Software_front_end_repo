@@ -15,13 +15,11 @@ def extract_text_from_pdf(pdf_file):
     print("Extracting text from the PDF...")
     text = ""
     
-    # Use a context manager to ensure the file is open
     try:
-        # Open the PDF file in binary read mode
         with open(pdf_file, 'rb') as file:
             pdf_reader = PdfReader(file)
             
-            # Iterate over all pages and extract text
+
             for page in pdf_reader.pages:
                 text += page.extract_text()
                 
