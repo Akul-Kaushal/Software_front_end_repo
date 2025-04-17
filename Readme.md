@@ -63,3 +63,7 @@ pip install -r requirements.txt
 
 🧾 Simplifying income/expense breakdowns
 
+## 🙋‍♂️ Author
+Made by Siddharth, Vikram, Akul with 💡 for learners who hate scrolling through Excel sheets.
+
+Feedback, suggestions, and contributions are always welcome!
